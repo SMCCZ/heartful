@@ -30,7 +30,7 @@ class InitilizationScreen extends StatelessWidget {
                   },
                   isSelected: gc.selectedtabIndex.value == index,
                   child: Text(
-                    gc.tabData[index],
+                    gc.tabData[index].tr,
                     style: theme.textTheme.button!.copyWith(
                       fontWeight: FontWeight.w700,
                       fontSize: 20,

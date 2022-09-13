@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/localization/translations.dart';
 import '/views/screens/initilization_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: AppTranslation(),
+      locale: const Locale("hi", "IN"),
       title: 'Heartful',
       theme: ThemeData(
         primarySwatch: Colors.blue,
