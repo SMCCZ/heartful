@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heartful/controllers/global_controller.dart';
-import '/views/screens/home_screen.dart';
+import '/controllers/global_controller.dart';
 
 class InitilizationScreen extends StatelessWidget {
   const InitilizationScreen({

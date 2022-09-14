@@ -1,10 +1,14 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'article.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Article {
   final String? id;
   final String? title;
-  final String? isVerified;
-  final String? isActive;
+  final bool? isVerified;
+  final bool? isActive;
   final String? subTitle;
-  final String? imgUrl;
+  final List<String>? imgUrls;
 
   Article({
     this.id,
@@ -12,6 +16,9 @@ class Article {
     this.isVerified,
     this.isActive,
     this.subTitle,
-    this.imgUrl,
+    this.imgUrls,
   });
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
+  Map<String, dynamic> toJson() => _$ArticleToJson(this);
 }

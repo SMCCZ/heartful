@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:heartful/views/screens/home_screen.dart';
 import 'package:http/http.dart';
 
+import '../localization/app_text.dart';
+
 class GlobalController extends GetxController {
   var selectedtabIndex = 0.obs;
   var screens = <Widget>[
@@ -17,13 +19,12 @@ class GlobalController extends GetxController {
     Container(),
   ];
   var tabData = [
-    "熱門景點",
-    "出國旅遊",
-    "台灣旅遊",
-    "熱搜遊記",
-    "我的行程",
-    "會員專區",
-    "會員專區",
+    AppTexts.destination,
+    AppTexts.abroad,
+    AppTexts.tourism,
+    AppTexts.notes,
+    AppTexts.itinerary,
+    AppTexts.membersOnly,
   ];
   @override
   void onInit() {
@@ -35,6 +36,6 @@ class GlobalController extends GetxController {
     var url = Uri.parse("https://api.disneyapi.dev/characters");
     var response = await get(url);
     var data = jsonDecode(response.body);
-    print(data);
+    //print(data);
   }
 }

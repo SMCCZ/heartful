@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:heartful/constants/asset_image.dart';
-import 'package:heartful/views/widgets/restaurant_card.dart';
-import 'package:heartful/views/widgets/travel_blog_card.dart';
+import 'package:get/get.dart';
+import '/views/widgets/loading_indicator.dart';
+import '/constants/asset_image.dart';
+import '/models/article.dart';
+import '/service/dao/mock_dao.dart';
+import '/views/widgets/drop_down_widget.dart';
+import '/views/widgets/restaurant_card.dart';
+import '/views/widgets/travel_blog_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -17,12 +22,21 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         controller: ScrollController(initialScrollOffset: 0.5),
         children: [
+          LoadingIndicator(),
           Stack(
             children: [
-              Image.asset(
-                KAssetsImage.bannerStars,
-                width: width,
-                fit: BoxFit.fitWidth,
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(
+                    DropDownWidget(),
+                    barrierDismissible: true,
+                  );
+                },
+                child: Image.asset(
+                  KAssetsImage.banner,
+                  width: width,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -54,7 +68,15 @@ class HomeScreen extends StatelessWidget {
                 ...List.generate(
                   4,
                   (index) => GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      addArticle(
+                        Article(
+                          isActive: true,
+                          isVerified: true,
+                          imgUrls: [],
+                        ),
+                      );
+                    },
                     child: const RestaurantCard(),
                   ),
                 ),
@@ -91,7 +113,9 @@ class HomeScreen extends StatelessWidget {
                 ...List.generate(
                   102,
                   (index) => GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      getArticle();
+                    },
                     child: const TravelBlogCard(),
                   ),
                 ),
